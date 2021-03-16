@@ -25,7 +25,7 @@ var apiBack = "&appid=639e73227e908c5498c3c5be9b183ef8&units=imperial";
 var apiForecastFront = "https://api.openweathermap.org/data/2.5/forecast?q="
 
 
-function searching(event) {
+function searching(event) {                                             //This is the current day forecast.
     event.preventDefault();
 
     var userCitySearch = citySearchEl.value.trim();
@@ -69,7 +69,7 @@ function searching(event) {
     
 }
 
-function forecasting(event) {
+function forecasting(event) {                                                   //This function starts the 5 day forecast.
     event.preventDefault();
 
     var userCitySearch = citySearchEl.value.trim();

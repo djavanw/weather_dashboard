@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.4em;
+    
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(20, 70px);
+}
+
+h1 {
+    grid-column: 2 / span 9;
+    grid-row: 1;
+    text-align: center;
+    background-color: blue;
+    
+}
+
+#formSearch {
+    grid-column: 2;
+    grid-row: 3 / span 3;
+    font-size: .30em;
+    width: auto;
+}
+
+#containerOne {
+    grid-column: 5 / span 2;
+    grid-row: 3 / span 1;
+    font-size: .15em;
+    
+}
+
+
+#containerFive {
+    grid-column: 4 / span 7;
+    grid-row:  6 / span 6;
+    font-size: .07em;
+    display: grid;
+}
+
+#fOne {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+#fTwo {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+#fThree {
+    grid-column: 5;
+    grid-row: 4;
+}
+
+#fFour {
+    grid-column: 6;
+    grid-row: 4;
+}
+
+#fFive {
+    grid-column: 7;
+    grid-row: 4;
+}
+
