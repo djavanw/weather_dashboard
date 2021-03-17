@@ -197,16 +197,16 @@ function ultraVioletIndex(uviLat, uviLon) {
         console.log(data.current.uvi);
         ultraVEl.innerHTML = `
         <ul>
-        <li>UV Index:  ${data.current.uvi}</li>
+        <li>UV Index:  <span class="uviData">${data.current.uvi}</span></li>
         <ul>
 
         `; 
         if(data.current.uvi >= 6) {
-            ultraVEl.style.background = "red";
+            document.querySelector(".uviData").style.background = "red";
         } else if (data.current.uvi <= 2) {
-            ultraVEl.style.background = "green"; 
+            document.querySelector(".uviData").style.background = "green"; 
         } else {
-            ultraVEl.style.background = "yellow"; 
+            document.querySelector(".uviData").style.background = "yellow"; 
         };
             
 
@@ -217,7 +217,7 @@ function ultraVioletIndex(uviLat, uviLon) {
     })
 }
 
-
+//ultraVEl.style.background 
 formSearchEl.addEventListener("submit", forecasting);
 formSearchEl.addEventListener("submit", searching);
 //formSearchEl.addEventListener("submit", ultraVioletIndex);
