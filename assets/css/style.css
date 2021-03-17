@@ -6,6 +6,10 @@
     
 }
 
+ul {
+    list-style-type: none;
+}
+
 .container {
     height: 100vh;
     display: grid;
@@ -29,7 +33,7 @@ h1 {
 }
 
 #containerOne {
-    grid-column: 5 / span 2;
+    grid-column: 5 / span 3;
     grid-row: 3 / span 1;
     font-size: .15em;
     
@@ -38,33 +42,31 @@ h1 {
 
 #containerFive {
     grid-column: 4 / span 7;
-    grid-row:  6 / span 6;
+    grid-row:  8 / span 6;
     font-size: .07em;
-    display: grid;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 #fOne {
-    grid-column: 3;
-    grid-row: 4;
+    flex: 1;
 }
 
 #fTwo {
-    grid-column: 4;
-    grid-row: 4;
+    flex: 1;
 }
 
 #fThree {
-    grid-column: 5;
-    grid-row: 4;
+    flex: 1;
 }
 
 #fFour {
-    grid-column: 6;
-    grid-row: 4;
+    flex: 1;
 }
 
 #fFive {
-    grid-column: 7;
-    grid-row: 4;
+    flex: 1;
 }
 

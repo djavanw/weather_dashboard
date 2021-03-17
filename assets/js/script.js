@@ -1,20 +1,24 @@
+var yourApiKey = "639e73227e908c5498c3c5be9b183ef8";
+var dailyForecastEl = document.querySelector("#one");
+var ultraVEl = document.querySelector("#ultraV");
+
 var formSearchEl = document.querySelector("#formSearch");
 var citySearchEl = document.querySelector("#citySearch");
 
 var searchBtnEl = document.querySelector("#searchBtn");
 
-var iconOneEl = document.querySelector('#iconOne');
-var iconTwoEl = document.querySelector('#iconTwo');
-var iconThreeEl = document.querySelector('#iconThree');
-var iconFourEl = document.querySelector('#iconFour');
-var iconFiveEl = document.querySelector('#iconFive');
-var iconSixEl = document.querySelector('#iconSix');
+var iconOneEl = document.querySelector("#iconOne");         //These are not being used
+var iconTwoEl = document.querySelector("#iconTwo");
+var iconThreeEl = document.querySelector("#iconThree");
+var iconFourEl = document.querySelector("#iconFour");
+var iconFiveEl = document.querySelector("#iconFive");
+var iconSixEl = document.querySelector("#iconSix");         //These are not being used
 
 var iconFront = "http://openweathermap.org/img/wn/";
 var iconBack  = "@2x.png";
 
 var apiFront = "https://api.openweathermap.org/data/2.5/weather?q=";
-var apiBack = "&appid=639e73227e908c5498c3c5be9b183ef8&units=imperial";
+var apiBack = "&appid=" + yourApiKey + "&units=imperial";
 
 // var curdat = new Date(null); ;                               //This will convert seconds to date/time
 // curdat.setTime(1615785250 * 1000);
@@ -22,31 +26,44 @@ var apiBack = "&appid=639e73227e908c5498c3c5be9b183ef8&units=imperial";
 
 //http://openweathermap.org/img/wn/10d@2x.png                   //This is the link for the icons
 
-var apiForecastFront = "https://api.openweathermap.org/data/2.5/forecast?q="
+var apiForecastFront = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
 
-function searching(event) {                                             //This is the current day forecast.
+//var uviLat;
+//var uviLon;
+var oneCallApi;
+var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+
+
+
+
+
+function searching(event) {                                             //This function is the current day forecast.
     event.preventDefault();
 
     var userCitySearch = citySearchEl.value.trim();
     var weatherAPI = apiFront + userCitySearch + apiBack;
     
-    console.log('You are in the function');
-    fetch(weatherAPI)
+    console.log("You are in the searching function");
+    fetch(weatherAPI) 
     .then(function(response) {
         return response.json()
     })
     .then(function(data) {
+        var uviLat = `${data.coord.lat}`;
+        var uviLon = `${data.coord.lon}`;
+        console.log(uviLat);
+        console.log(uviLon);
         var daIcon = `${data.weather[0].icon}`; 
         iconOneEl.src = iconFront + daIcon + iconBack;
-        console.log(data);
-        document.querySelector("#one").innerHTML = 
+        console.log("You are in the searching function" + data);
+        dailyForecastEl.innerHTML = 
         `
         <ul>
         <li> Date:  ${data.dt} </li>
         <li> Name:  ${data.name} </li>
-        <li> Description:  ${data.weather[0].icon} </li>
-        <li> Temp:  ${data.main.temp} </li>
+        <li> Description:  ${data.weather[0].icon}</li>
+        <li> Temp:  ${data.main.temp} &#8457 </li>
         <li> Humidity:  ${data.main.humidity}% </li>
         <li> Wind Speed:  ${data.wind.speed} MPH </li>
         <li> UV Index:  ${data.main.temp} </li>
@@ -60,12 +77,11 @@ function searching(event) {                                             //This i
 
 
 
-        console.log( `${data.weather[0].icon}`)
-
-
-
-    citySearchEl.textContent = "";    
+        ultraVioletIndex(uviLat, uviLon);
+              
     })
+
+    
     
 }
 
@@ -75,35 +91,36 @@ function forecasting(event) {                                                   
     var userCitySearch = citySearchEl.value.trim();
     var forecastWeatherAPI = apiForecastFront + userCitySearch + apiBack;
     
-    console.log('You are in the function');
+    console.log("You are in the function");
     fetch(forecastWeatherAPI)
     .then(function(response) {
         return response.json()
     })
     .then(function(data) {
-        console.log(data);
-        var daIcon2 = `${data.list[1].weather[0].icon}`;                        //This block of code will gather the icon code numbers from data 
-        iconTwoEl.src = iconFront + daIcon2 + iconBack;                         //and get the weather icons from the website.
+        console.log("You are in the 5 day Forecast" + data);
+        var daIcon2 = `${data.list[2].weather[0].icon}`;                        //This block of code will gather the icon code numbers from data 
+        // iconTwoEl.src = iconFront + daIcon2 + iconBack;                         //and get the weather icons from the website.
 
-        var daIcon3 = `${data.list[1].weather[0].icon}`; 
-        iconThreeEl.src = iconFront + daIcon3 + iconBack;
+        var daIcon3 = `${data.list[10].weather[0].icon}`; 
+        // iconThreeEl.src = iconFront + daIcon3 + iconBack;
 
-        var daIcon4 = `${data.list[1].weather[0].icon}`; 
-        iconFourEl.src = iconFront + daIcon4 + iconBack;
+        var daIcon4 = `${data.list[18].weather[0].icon}`; 
+        //iconFourEl.src = iconFront + daIcon4 + iconBack;
 
-        var daIcon5 = `${data.list[1].weather[0].icon}`; 
-        iconFiveEl.src = iconFront + daIcon5 + iconBack;
+        var daIcon5 = `${data.list[26].weather[0].icon}`; 
+        //iconFiveEl.src = iconFront + daIcon5 + iconBack;
 
-        var daIcon6 = `${data.list[1].weather[0].icon}`; 
-        iconSixEl.src = iconFront + daIcon6 + iconBack;
+        var daIcon6 = `${data.list[34].weather[0].icon}`; 
+        //iconSixEl.src = iconFront + daIcon6 + iconBack;
 
    
         document.querySelector("#two").innerHTML =                              //Data pull for day one of five day. 12noon
         `                                                                           
         <ul>
         <li> date:  ${data.list[2].dt_txt} </li>
-        <li> Description:  ${data.list[1].weather[0].icon} </li>
-        <li> Temp:  ${data.list[2].main.temp} </li>
+        <li> <img src= ${iconFront + daIcon2 + iconBack}> </li>
+        <li> Description:  ${data.list[2].weather[0].icon} </li>
+        <li> Temp:  ${data.list[2].main.temp} &#8457 </li>
         <li> Humidity:  ${data.list[2].main.humidity}% </li>
         </ul>
         `
@@ -113,8 +130,9 @@ function forecasting(event) {                                                   
         `
         <ul>
         <li> date:  ${data.list[10].dt_txt} </li>
-        <li> Description:  ${data.list[1].weather[0].icon} </li>
-        <li> Temp:  ${data.list[10].main.temp} </li>
+        <li> <img src= ${iconFront + daIcon3 + iconBack}> </li>
+        <li> Description:  ${data.list[10].weather[0].icon} </li>
+        <li> Temp:  ${data.list[10].main.temp} &#8457 </li>
         <li> Humidity:  ${data.list[10].main.humidity}% </li>
         </ul>
         `
@@ -123,8 +141,9 @@ function forecasting(event) {                                                   
         `
         <ul>
         <li> date:  ${data.list[18].dt_txt} </li>
-        <li> Description:  ${data.list[1].weather[0].icon} </li>
-        <li> Temp:  ${data.list[18].main.temp} </li>
+        <li> <img src= ${iconFront + daIcon4 + iconBack}> </li>
+        <li> Description:  ${data.list[18].weather[0].icon} </li>
+        <li> Temp:  ${data.list[18].main.temp} &#8457 </li>
         <li> Humidity:  ${data.list[18].main.humidity}% </li>
         </ul>
         `
@@ -133,8 +152,9 @@ function forecasting(event) {                                                   
         `
         <ul>
         <li> date:  ${data.list[26].dt_txt} </li>
-        <li> Description:  ${data.list[1].weather[0].icon} </li>
-        <li> Temp:  ${data.list[26].main.temp} </li>
+        <li> <img src= ${iconFront + daIcon5 + iconBack}> </li>
+        <li> Description:  ${data.list[26].weather[0].icon} </li>
+        <li> Temp:  ${data.list[26].main.temp} &#8457 </li>
         <li> Humidity:  ${data.list[26].main.humidity}% </li>
         </ul>
         `
@@ -143,30 +163,64 @@ function forecasting(event) {                                                   
         `
         <ul>
         <li> ${data.list[34].dt_txt} </li>
-        <li> Description:  ${data.list[1].weather[0].icon} </li>
-        <li> Temp:  ${data.list[34].main.temp} </li>
+        <li> <img src= ${iconFront + daIcon6 + iconBack}> </li>
+        <li> Description:  ${data.list[34].weather[0].icon} </li>
+        <li> Temp:  ${data.list[34].main.temp} &#8457 </li>
         <li> Humidity:  ${data.list[34].main.humidity}% </li>
         </ul>
         `
-
-
         
     })
-   
+
+
+  
 }
 
 
+function ultraVioletIndex(uviLat, uviLon) {  
+    console.log(uviLat);                                                 //This function starts the 5 day forecast.
+        
+    oneCallApi = "https://api.openweathermap.org/data/2.5/onecall?lat=" + 
+    uviLat + "&lon=" + uviLon + "&exclude=alerts&appid=" +
+    yourApiKey;
+
+    //var userCitySearch = citySearchEl.value.trim();
+    //var forecastWeatherAPI = apiForecastFront + userCitySearch + apiBack;
+       
+    fetch(oneCallApi)
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(data) {
+        console.log("You are in the UVI");   
+        console.log(data);
+        console.log(data.current.uvi);
+        ultraVEl.innerHTML = `
+        <ul>
+        <li>UV Index:  ${data.current.uvi}</li>
+        <ul>
+
+        `; 
+        if(data.current.uvi >= 6) {
+            ultraVEl.style.background = "red";
+        } else if (data.current.uvi <= 2) {
+            ultraVEl.style.background = "green"; 
+        } else {
+            ultraVEl.style.background = "yellow"; 
+        };
+            
+
+     
 
 
 
-
-
-
+    })
+}
 
 
 formSearchEl.addEventListener("submit", forecasting);
 formSearchEl.addEventListener("submit", searching);
-
+//formSearchEl.addEventListener("submit", ultraVioletIndex);
 
 
 // fetch("https://api.openweathermap.org/data/2.5/weather?q=El Paso&appid=639e73227e908c5498c3c5be9b183ef8&units=imperial")
