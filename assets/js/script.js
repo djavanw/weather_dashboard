@@ -7,12 +7,12 @@ var citySearchEl = document.querySelector("#citySearch");
 
 var searchBtnEl = document.querySelector("#searchBtn");
 
-var iconOneEl = document.querySelector("#iconOne");         //These are not being used
-var iconTwoEl = document.querySelector("#iconTwo");
-var iconThreeEl = document.querySelector("#iconThree");
-var iconFourEl = document.querySelector("#iconFour");
-var iconFiveEl = document.querySelector("#iconFive");
-var iconSixEl = document.querySelector("#iconSix");         //These are not being used
+var iconOneEl = document.querySelector("#iconOne");         
+// var iconTwoEl = document.querySelector("#iconTwo");          //These are not being used
+// var iconThreeEl = document.querySelector("#iconThree");
+// var iconFourEl = document.querySelector("#iconFour");
+// var iconFiveEl = document.querySelector("#iconFive");
+// var iconSixEl = document.querySelector("#iconSix");         //These are not being used
 
 var iconFront = "http://openweathermap.org/img/wn/";
 var iconBack  = "@2x.png";
@@ -36,7 +36,11 @@ var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 
 
 
-
+// document.addEventListener('DOMContentLoaded', function() {        //Modal
+//     var elems = document.querySelectorAll('.modal');
+//     var options ="opacity";
+//     var instances = M.Modal.init(elems, options);
+//   });
 
 function searching(event) {                                             //This function is the current day forecast.
     event.preventDefault();
@@ -60,7 +64,7 @@ function searching(event) {                                             //This f
         dailyForecastEl.innerHTML = 
         `
         <ul>
-        <li> Date:  ${data.dt} </li>
+        <li> Date..:  ${moment(data.dt,"X").format("MM/DD/YYYY")} </li>
         <li> Name:  ${data.name} </li>
         <li> Description:  ${data.weather[0].icon}</li>
         <li> Temp:  ${data.main.temp} &#8457 </li>
@@ -73,10 +77,6 @@ function searching(event) {                                             //This f
         // var iconOneEl = document.querySelector('#iconOne');
         // var iconFront = "http://openweathermap.org/img/wn/";
         // var iconBack  = "@2x.png";
-        
-
-
-
         ultraVioletIndex(uviLat, uviLon);
               
     })
@@ -117,7 +117,7 @@ function forecasting(event) {                                                   
         document.querySelector("#two").innerHTML =                              //Data pull for day one of five day. 12noon
         `                                                                           
         <ul>
-        <li> date:  ${data.list[2].dt_txt} </li>
+        <li> date:  ${moment(data.list[2].dt,"X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon2 + iconBack}> </li>
         <li> Description:  ${data.list[2].weather[0].icon} </li>
         <li> Temp:  ${data.list[2].main.temp} &#8457 </li>
@@ -129,7 +129,7 @@ function forecasting(event) {                                                   
         document.querySelector("#three").innerHTML =                            //Data pull for day two of five day. 12noon
         `
         <ul>
-        <li> date:  ${data.list[10].dt_txt} </li>
+        <li> date:  ${moment(data.list[10].dt,"X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon3 + iconBack}> </li>
         <li> Description:  ${data.list[10].weather[0].icon} </li>
         <li> Temp:  ${data.list[10].main.temp} &#8457 </li>
@@ -140,7 +140,7 @@ function forecasting(event) {                                                   
         document.querySelector("#four").innerHTML =                            //Data pull for day three of five day. 12noon
         `
         <ul>
-        <li> date:  ${data.list[18].dt_txt} </li>
+        <li> date:  ${moment(data.list[18].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon4 + iconBack}> </li>
         <li> Description:  ${data.list[18].weather[0].icon} </li>
         <li> Temp:  ${data.list[18].main.temp} &#8457 </li>
@@ -151,7 +151,7 @@ function forecasting(event) {                                                   
         document.querySelector("#five").innerHTML =                             //Data pull for day four of five day. 12noon
         `
         <ul>
-        <li> date:  ${data.list[26].dt_txt} </li>
+        <li> date:  ${moment(data.list[26].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon5 + iconBack}> </li>
         <li> Description:  ${data.list[26].weather[0].icon} </li>
         <li> Temp:  ${data.list[26].main.temp} &#8457 </li>
@@ -162,7 +162,7 @@ function forecasting(event) {                                                   
         document.querySelector("#six").innerHTML =                               //Data pull for day five of five day.
         `
         <ul>
-        <li> ${data.list[34].dt_txt} </li>
+        <li> ${moment(data.list[34].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon6 + iconBack}> </li>
         <li> Description:  ${data.list[34].weather[0].icon} </li>
         <li> Temp:  ${data.list[34].main.temp} &#8457 </li>
