@@ -22,51 +22,76 @@ h1 {
     grid-row: 1;
     text-align: center;
     background-color: blue;
+    font-size: 1.2em;
     
 }
 
+
 #formSearch {
-    grid-column: 2;
-    grid-row: 3 / span 3;
-    font-size: .30em;
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 2;
+    font-size: .35em;
     width: auto;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#searchHistory {
+    grid-column: 2;
+    grid-row: 4 / span 6;
+    font-size: 20px;
+}
+
+
+
+fieldset {
+    flex: 2 2 2;
+    text-align: center;
+    font-size: .95em;
+    display: flex;
+    
+    
 }
 
 #containerOne {
     grid-column: 5 / span 3;
-    grid-row: 3 / span 1;
+    grid-row: 2 / span 1;
     font-size: .15em;
+    padding: 50px;
     
 }
 
+#searchBtn, #citySearch, #label {
+    flex: 1;
+    cursor: pointer;
+}
+
+#thaSquare {
+    grid-column: 5 / span 6;
+    grid-row: 2 / span 5;
+    border: solid 2px grey;
+    margin: 10px;
+}
 
 #containerFive {
     grid-column: 4 / span 7;
-    grid-row:  8 / span 6;
+    grid-row:  7 / span 5;
     font-size: .07em;
     display: flex;
-    justify-content:space-between;
+    justify-content:space-evenly;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
-#fOne {
+#fOne, #fTwo, #fThree,
+ #fFour, #fFive  {
     flex: 1;
-}
+    text-align: center;
+    color: white;
+    background-color: blue;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 2.0em;
 
-#fTwo {
-    flex: 1;
 }
-
-#fThree {
-    flex: 1;
-}
-
-#fFour {
-    flex: 1;
-}
-
-#fFive {
-    flex: 1;
-}
-
