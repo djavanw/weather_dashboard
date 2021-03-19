@@ -3,7 +3,7 @@ var dailyForecastEl = document.querySelector("#one");
 var ultraVEl = document.querySelector("#ultraV");
 
 var formSearchEl = document.querySelector("#formSearch");
-var citySearchEl = document.querySelector("#citySearch");
+var citySearchEl = $("#citySearch");
 var previousSearchItemsBtnEl = document.querySelector(".previousSearchItemsBtn");
 var searchBtnEl = document.querySelector("#searchBtn");
 var historyItemsEl = $("#historyItems");
@@ -33,12 +33,15 @@ var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 function searching(event) {                                             //This function is the current day forecast.
     event.preventDefault();
 
-    var userCitySearch = citySearchEl.value.trim();
+    var userCitySearch = citySearchEl.val();
     var weatherAPI = apiFront + userCitySearch + apiBack;
     
     var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
     userInputTrimmed.click(function(event) {
         event.preventDefault();
+        var value = $(this).text;
+        console.log(value);
+        
     });
     storageCity.push(userCitySearch);
     localStorage.setItem("storageCity", JSON.stringify(storageCity));
@@ -70,6 +73,7 @@ function searching(event) {                                             //This f
         </ul>
         `
         ultraVioletIndex(uviLat, uviLon);
+        
               
     })
     
@@ -82,7 +86,7 @@ function searching(event) {                                             //This f
 function forecasting(event) {                                                   //This function starts the 5 day forecast.
     event.preventDefault();
 
-    var userCitySearch = citySearchEl.value.trim();
+    var userCitySearch = citySearchEl.val();
     var forecastWeatherAPI = apiForecastFront + userCitySearch + apiBack;
     
     console.log("You are in the function");
@@ -143,7 +147,7 @@ function forecasting(event) {                                                   
         <li> Humidity:  ${data.list[34].main.humidity}% </li>
         </ul>
         `
-        
+        citySearchEl.val("");
     })
  
 }
@@ -191,12 +195,15 @@ function pullStorageCity () {
         storageCity = JSON.parse(localStorage.getItem("storageCity"));
         for(let k = 0; k < storageCity.length; k++) {
             var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
-            // userInputTrimmed.click(function(event) {
-            //     event.preventDefault();
-            // })
+            userInputTrimmed.click(function(event) {
+                event.preventDefault();
+                var value = $(this).text;
+                console.log(value);
+            })
             userInputTrimmed.text(storageCity[k]);
             userInputTrimmed.on("click", searching);
-            previousSearchesBox.append(userInputTrimmed);   
+            previousSearchesBox.append(userInputTrimmed);
+
         }
     }
    
@@ -204,13 +211,16 @@ function pullStorageCity () {
 
 
 pullStorageCity(); 
+
+
+
 //ultraVEl.style.background
 // previousSearchItemsBtnEl.addEventListener('click', )
 
 
 searchBtnEl.addEventListener("click", forecasting);
 searchBtnEl.addEventListener("click", searching);
-// previousSearchItemsBtnEl.addEventListener("click", searching);
+previousSearchItemsBtnEl.addEventListener("click", searching);
 
 
 
