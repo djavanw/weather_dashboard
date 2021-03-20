@@ -4,7 +4,7 @@ var ultraVEl = document.querySelector("#ultraV");
 
 var formSearchEl = document.querySelector("#formSearch");
 var citySearchEl = $("#citySearch");
-var previousSearchItemsBtnEl = document.querySelector(".previousSearchItemsBtn");
+var previousSearchItemsBtnEl = document.getElementsByClassName(".previousSearchItemsBtn");
 var searchBtnEl = document.querySelector("#searchBtn");
 var historyItemsEl = $("#historyItems");
 var previousSearchesBox = $("#previousSearches");
@@ -60,7 +60,7 @@ function searching(event) {                                             //This f
         console.log(uviLon);
         var daIcon = `${data.weather[0].icon}`; 
         // iconOneEl.src = iconFront + daIcon + iconBack;
-        console.log("You are in the searching function" + data);
+        console.log(data);
         dailyForecastEl.innerHTML = 
         `
         <ul>
@@ -147,7 +147,7 @@ function forecasting(event) {                                                   
         <li> Humidity:  ${data.list[34].main.humidity}% </li>
         </ul>
         `
-        citySearchEl.val("");
+        //citySearchEl.val("");
     })
  
 }
@@ -220,7 +220,7 @@ pullStorageCity();
 
 searchBtnEl.addEventListener("click", forecasting);
 searchBtnEl.addEventListener("click", searching);
-previousSearchItemsBtnEl.addEventListener("click", searching);
+//previousSearchItemsBtnEl.addEventListener("click", searching);
 
 
 
