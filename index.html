@@ -16,60 +16,66 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Weather Dashboard</h1>
+    <div class="tile is-ancestor container">
+        <h1 class="title">Weather Dashboard</h1>
         
         <!-- <i class="fas fa-search-location"></i> -->
         
         <!-- form area for search -->
         
-        <form id="formSearch">
+        <form class="tile is-4 is-vertical is-parent" id="formSearch">
             <fieldset>
-                <legend>Search for a City:</legend>
-                <label id="label" for="city"></label>
-                <input id="citySearch" type="text">
-                <button id="searchBtn">Search</button>
+                <div class="tile is-child box">
+                  <legend class="tile is-child box">Search for a City:</legend>
+                  <label class="tile is-child box" id="label" for="city"></label>
+                  <input class="button is-primary" id="citySearch" type="text">
+                  <button class="button is-info" id="searchBtn">Search</button>
+                </div>
             </fieldset>
-            <div id="searchHistory" class="searching">
-              <div id="previousSearches">
-                <button class="previousSearchItemsBtn" type="button" ></button>
+            <div class="title is-child box">
+              <div class="title is-child box is-flex-direction-column" id="searchHistory" class="searching">
+                <div class="is-1 column" id="previousSearches">
+                  <button id="preBtns" class="previousSearchItemsBtn column is-1" type="button" ></button>
+                </div>
               </div>
             </div>
         </form>
          
         
 
-        <div id="containerOne">
+        <div class="tile is-parent" id="containerOne">
+          <div class="tile is-child box">
             <!-- <img src=""  id = "iconOne" alt = "icon"> -->
             <p id="one"></p>
             <p id="ultraV"></p>
+          </div>  
         </div>
         <div id="thaSquare"></div>
     
-        
-        
-        <div id="containerFive">
-            <div id="fOne">
+               
+    
+        <div class="tile is-parent"  id="containerFive">
+            <div class="tile is-child box" id="fOne">
                 <!-- <img src=""  id = "iconTwo" class="forecastFive" alt = "icon">      ****Using Template literal to insert -->
                 <div id="two"></div>
             </div>
 
-            <div id="fTwo">
+            <div class="tile is-child box" id="fTwo">
                 <!-- <img src=""  id = "iconThree" class="forecastFive" alt = "icon"> -->
                 <p id="three"> </p>
             </div>
 
-            <div id="fThree">
+            <div class="tile is-child box" id="fThree">
                 <!-- <img src=""  id = "iconFour" class="forecastFive" alt = "icon"> -->
                 <p id="four"> </p>
             </div>
 
-            <div id="fFour">
+            <div class="tile is-child box"  id="fFour">
                 <!-- <img src=""  id = "iconFive" class="forecastFive" alt = "icon"> -->
                 <p id="five"> </p>
             </div>
 
-            <div id="fFive">
+            <div class="tile is-child box" id="fFive">
                 <!-- <img src=""  id = "iconSix" class="forecastFive" alt = "icon"> -->
                 <p id="six"> </p>
             </div>

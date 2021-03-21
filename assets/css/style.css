@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 1.4em;
+    font-size: 1.35em;
     
 }
 
@@ -16,11 +16,6 @@
 #one p {
     grid-row: 1;
 }
-
-
-
-
-
 
 ul {
     grid-row: 1;
@@ -54,18 +49,18 @@ h1 {
     grid-column: 2 / span 2;
     grid-row: 2 / span 2;
     font-size: .35em;
-    width: auto;
+    /* width: auto; */
     /* display: flex; */
-    justify-content:space-between;
+    /* justify-content:space-between; */
     align-items: center;
 }
 
 fieldset {
-    flex: 2 2 2;
+    /* flex: 2 2 2; */
     text-align: center;
     font-size: .95em;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
  
 }
 
@@ -74,8 +69,12 @@ span {
 }
 
 #searchHistory {
-    flex: 1;
+    /* flex: 1; */
     font-size: 20px;
+}
+
+#preBtns {
+    font-size: 15px;
 }
 
 #searchBtn, #citySearch, #label {
@@ -89,7 +88,7 @@ span {
     grid-column: 5 / span 3;
     grid-row: 2 / span 1;
     font-size: .15em;
-    padding: 50px;
+    padding: 40px;
     
 }
 
@@ -121,5 +120,53 @@ span {
     border-radius: 10px;
     margin: 10px;
     font-size: 2.0em;
+
+}
+
+/* Media Query */
+@media screen and (max-width: 768px) {
+    #formSearch {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        font-size: .30em;
+        width: auto;
+        /* display: flex; */
+        /* justify-content:space-between; */
+        align-items: center;
+    }
+
+    #containerOne {
+        grid-column: 6 / span 2;
+        grid-row: 2 / span 1;
+        font-size: .10em;
+        padding: 25px;
+        
+    }
+    
+    ul li:first-child {
+        font-size: 30px;
+    }
+    
+    #thaSquare {
+        grid-column: 6 / span 4;
+        grid-row: 2 / span 6;
+        border: solid 2px grey;
+        margin: 10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

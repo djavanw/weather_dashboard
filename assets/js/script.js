@@ -1,15 +1,4 @@
-
-// var userCitySearch;
-// var oneCallApi;
-// var weatherApi;
-// var forecastWeatherApi;
-// function searching(event, userCitySearch) {                                             //This function is the current day forecast.
-//     console.log(event);
-//     event.preventDefault();
-
-//     userCitySearch = citySearchEl.val();
-//     weatherApi = apiFront + userCitySearch + apiBack;
-    
+//Variables jQuery and JS   
 var yourApiKey = "639e73227e908c5498c3c5be9b183ef8";
 var dailyForecastEl = document.querySelector("#one");
 var ultraVEl = document.querySelector("#ultraV");
@@ -21,15 +10,12 @@ var historyItemsEl = $("#historyItems");
 var previousSearchesBox = $("#previousSearches");
 var iconOneEl = document.querySelector("#iconOne");
 
-var storageCity = [];                                       //For city names in local storage
+//For city names in local storage
+var storageCity = [];
+
 var userCitySearch;
 
-//var iconTwoEl = document.querySelector("#iconTwo");          //These are not being used
-// var iconThreeEl = document.querySelector("#iconThree");
-// var iconFourEl = document.querySelector("#iconFour");
-// var iconFiveEl = document.querySelector("#iconFive");
-// var iconSixEl = document.querySelector("#iconSix");         //These are not being used
-
+// Elements to make full URLs
 var iconFront = "http://openweathermap.org/img/wn/";
 var iconBack = "@2x.png";
 var apiFront = "https://api.openweathermap.org/data/2.5/weather?q=";
@@ -38,11 +24,11 @@ var apiForecastFront = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var oneCallApi;
 var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 
+//This function is the current day forecast.
 function searching(event, userCitySearch) {
   console.log(event);
-                                                                            //This function is the current day forecast.
+                                                                            
   var weatherAPI = apiFront + userCitySearch + apiBack;
-
   var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
   userInputTrimmed.click(function (event) {
     event.preventDefault();
@@ -51,13 +37,14 @@ function searching(event, userCitySearch) {
     searching(event, value);
     forecasting(event, value);
   });
+  //Element in localstorage check
   if(storageCity.indexOf(userCitySearch) === -1) {
       storageCity.push(userCitySearch);
       localStorage.setItem("storageCity", JSON.stringify(storageCity));
       userInputTrimmed.text(userCitySearch);
       previousSearchesBox.append(userInputTrimmed);
   } 
-  
+  //Fetch for daily weather conditions
   fetch(weatherAPI)
     .then(function (response) {
       return response.json();
@@ -69,8 +56,8 @@ function searching(event, userCitySearch) {
       console.log(uviLat);
       console.log(uviLon);
       var daIcon = `${data.weather[0].icon}`;
-      // iconOneEl.src = iconFront + daIcon + iconBack;
       console.log("You are in the searching function" + data);
+      //Template literals for the actual data in the daily forecast area
       dailyForecastEl.innerHTML = 
         `
         <ul>
@@ -86,27 +73,27 @@ function searching(event, userCitySearch) {
     });
 }
 
+//This function starts the 5 day forecast.
 function forecasting(event, userCitySearch) {
-  //This function starts the 5 day forecast.
   event.preventDefault();
   var forecastWeatherApi = apiForecastFront + userCitySearch + apiBack;
-
   console.log("You are in the function");
-
   fetch(forecastWeatherApi)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data);
-      var daIcon2 = `${data.list[2].weather[0].icon}`; //This block of code will gather the icon code numbers from data
-      var daIcon3 = `${data.list[10].weather[0].icon}`; //and get the weather icons from the website.
+      //This block of code will gather the icon code numbers from data
+      //and get the weather icons from the website.
+      var daIcon2 = `${data.list[2].weather[0].icon}`; 
+      var daIcon3 = `${data.list[10].weather[0].icon}`; 
       var daIcon4 = `${data.list[18].weather[0].icon}`;
       var daIcon5 = `${data.list[26].weather[0].icon}`;
       var daIcon6 = `${data.list[34].weather[0].icon}`;
 
-      document.querySelector("#two").innerHTML =
-        //Data pull for day one of five day. 12noon
+      //Data pull for day one of five day. 12noon
+      document.querySelector("#two").innerHTML =        
         `                                                                           
         <ul>
         <li></li>
@@ -117,7 +104,6 @@ function forecasting(event, userCitySearch) {
         </ul>
         `;
       document.querySelector("#three").innerHTML =
-        //Data pull for day two of five day. 12noon
         `
         <ul>
         <li></li>
@@ -128,7 +114,6 @@ function forecasting(event, userCitySearch) {
         </ul>
         `;
       document.querySelector("#four").innerHTML =
-        //Data pull for day three of five day. 12noon
         `
         <ul>
         <li></li>
@@ -139,7 +124,6 @@ function forecasting(event, userCitySearch) {
         </ul>
         `;
       document.querySelector("#five").innerHTML =
-        //Data pull for day four of five day. 12noon
         `
         <ul>
         <li></li>
@@ -150,7 +134,6 @@ function forecasting(event, userCitySearch) {
         </ul>
         `;
       document.querySelector("#six").innerHTML =
-        //Data pull for day five of five day.
         `
         <ul>
         <li></li>
@@ -160,10 +143,12 @@ function forecasting(event, userCitySearch) {
         <li> Humidity:  ${data.list[34].main.humidity}% </li>
         </ul>
         `;
+      //Clears data from input field
       citySearchEl.val("");
     });
 }
 
+//Separate function to get the UV data for the current day
 function ultraVioletIndex(uviLat, uviLon) {
   console.log(uviLat); //This function starts the 5 day forecast.
 
@@ -175,9 +160,6 @@ function ultraVioletIndex(uviLat, uviLon) {
     "&exclude=alerts&appid=" +
     yourApiKey;
 
-  //var userCitySearch = citySearchEl.value.trim();
-  //var forecastWeatherAPI = apiForecastFront + userCitySearch + apiBack;
-
   fetch(oneCallApi)
     .then(function (response) {
       return response.json();
@@ -186,14 +168,11 @@ function ultraVioletIndex(uviLat, uviLon) {
       console.log("You are in the UVI");
       console.log(data);
       console.log(data.current.uvi);
-
-      
-       ultraVEl.innerHTML= `
+      ultraVEl.innerHTML= `
         <ul>
         <li></li>
         <li>UV Index:  <span class="uviData">${data.current.uvi}</span></li>
         <ul>
-
         `;
       if (data.current.uvi >= 6) {
         document.querySelector(".uviData").style.background = "red";
@@ -205,6 +184,7 @@ function ultraVioletIndex(uviLat, uviLon) {
     });
 }
 
+//Function to pull city names from storage
 function pullStorageCity() {
   if (localStorage.getItem("storageCity")) {
     storageCity = JSON.parse(localStorage.getItem("storageCity"));
@@ -226,16 +206,7 @@ function pullStorageCity() {
 
 pullStorageCity();
 
-//ultraVEl.style.background
-// previousSearchItemsBtnEl.addEventListener('click', )
-
-// searchBtnEl.addEventListener("click", function(event) {
-//   forecasting(event, searchBtnEl.val());
-// });
-// searchBtnEl.addEventListener("click", function(event) {
-//     searching(event, searchBtnEl.val());
-// });
-
+//Listening for submit to start application with user
 formSearchEl.addEventListener("submit", function (event) {
   event.preventDefault();
   searching(event, citySearchEl.val());
