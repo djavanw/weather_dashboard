@@ -32,27 +32,34 @@ h1 {
     grid-row: 2 / span 2;
     font-size: .35em;
     width: auto;
-    display: flex;
+    /* display: flex; */
     justify-content:space-between;
     align-items: center;
 }
-
-#searchHistory {
-    grid-column: 2;
-    grid-row: 4 / span 6;
-    font-size: 20px;
-}
-
-
 
 fieldset {
     flex: 2 2 2;
     text-align: center;
     font-size: .95em;
     display: flex;
+    flex-direction: column;
     
     
 }
+
+
+#searchHistory {
+    flex: 1;
+    /* grid-row: 4 / span 6; */
+    font-size: 20px;
+}
+
+#searchBtn, #citySearch, #label {
+    flex: 1;
+    cursor: pointer;
+}
+
+
 
 #containerOne {
     grid-column: 5 / span 3;
@@ -62,10 +69,7 @@ fieldset {
     
 }
 
-#searchBtn, #citySearch, #label {
-    flex: 1;
-    cursor: pointer;
-}
+
 
 #thaSquare {
     grid-column: 5 / span 6;
