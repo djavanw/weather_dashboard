@@ -40,24 +40,23 @@ var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 
 function searching(event, userCitySearch) {
   console.log(event);
-                                         //This function is the current day forecast.
+                                                                            //This function is the current day forecast.
   var weatherAPI = apiFront + userCitySearch + apiBack;
 
   var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
   userInputTrimmed.click(function (event) {
-    var value = $(this).text;
-    console.log(value);
-
     event.preventDefault();
+    var value = $(this).text();
+    console.log(value);
     searching(event, value);
+    forecasting(event, value);
   });
-
-  storageCity.push(userCitySearch);
-  localStorage.setItem("storageCity", JSON.stringify(storageCity));
-  userInputTrimmed.text(userCitySearch);
-  previousSearchesBox.append(userInputTrimmed);
-  console.log(userInputTrimmed);
-  console.log("You are in the searching function");
+  if(storageCity.indexOf(userCitySearch) === -1) {
+      storageCity.push(userCitySearch);
+      localStorage.setItem("storageCity", JSON.stringify(storageCity));
+      userInputTrimmed.text(userCitySearch);
+      previousSearchesBox.append(userInputTrimmed);
+  } 
   
   fetch(weatherAPI)
     .then(function (response) {
@@ -205,8 +204,10 @@ function pullStorageCity() {
       var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
       userInputTrimmed.click(function (event) {
         event.preventDefault();
-        var value = $(this).text;
+        var value = $(this).text();
         console.log(value);
+        searching(event, value);
+        forecasting(event, value);
       });
       userInputTrimmed.text(storageCity[k]);
       userInputTrimmed.on("click", searching); 
