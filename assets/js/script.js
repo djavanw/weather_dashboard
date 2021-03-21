@@ -109,6 +109,7 @@ function forecasting(event, userCitySearch) {
         //Data pull for day one of five day. 12noon
         `                                                                           
         <ul>
+        <li></li>
         <li>${moment(data.list[2].dt, "X").format("MM/DD/YYYY")}</li>
         <li> <img src= ${iconFront + daIcon2 + iconBack}> </li>
         <li> Temp:  ${data.list[2].main.temp} &#8457 </li>
@@ -119,6 +120,7 @@ function forecasting(event, userCitySearch) {
         //Data pull for day two of five day. 12noon
         `
         <ul>
+        <li></li>
         <li> ${moment(data.list[10].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon3 + iconBack}> </li>
         <li> Temp:  ${data.list[10].main.temp} &#8457 </li>
@@ -129,6 +131,7 @@ function forecasting(event, userCitySearch) {
         //Data pull for day three of five day. 12noon
         `
         <ul>
+        <li></li>
         <li> ${moment(data.list[18].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon4 + iconBack}> </li>
         <li> Temp:  ${data.list[18].main.temp} &#8457 </li>
@@ -139,6 +142,7 @@ function forecasting(event, userCitySearch) {
         //Data pull for day four of five day. 12noon
         `
         <ul>
+        <li></li>
         <li> ${moment(data.list[26].dt, "X").format("MM/DD/YYYY")} </li>        
         <li> <img src= ${iconFront + daIcon5 + iconBack}> </li>
         <li> Temp:  ${data.list[26].main.temp} &#8457 </li>
@@ -149,6 +153,7 @@ function forecasting(event, userCitySearch) {
         //Data pull for day five of five day.
         `
         <ul>
+        <li></li>
         <li> ${moment(data.list[34].dt, "X").format("MM/DD/YYYY")} </li>
         <li> <img src= ${iconFront + daIcon6 + iconBack}> </li>
         <li> Temp:  ${data.list[34].main.temp} &#8457 </li>
@@ -181,8 +186,11 @@ function ultraVioletIndex(uviLat, uviLon) {
       console.log("You are in the UVI");
       console.log(data);
       console.log(data.current.uvi);
-      ultraVEl.innerHTML = `
+
+      
+       ultraVEl.innerHTML= `
         <ul>
+        <li></li>
         <li>UV Index:  <span class="uviData">${data.current.uvi}</span></li>
         <ul>
 
