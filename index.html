@@ -11,104 +11,76 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <div class="tile is-ancestor container">
-        <h1 class="title">Weather Dashboard</h1>
-        
-        <!-- <i class="fas fa-search-location"></i> -->
-        
+    <div id="container" class="is-family-san-serif">
+        <h1 class="title is-1 has-text-white has-background-link is-align-self-center" id="header">Weather Dashboard</h1>
+            
         <!-- form area for search -->
         
-        <form class="tile is-4 is-vertical is-parent" id="formSearch">
+        <form id="formSearch">
             <fieldset>
-                <div class="tile is-child box">
-                  <legend class="tile is-child box">Search for a City:</legend>
-                  <label class="tile is-child box" id="label" for="city"></label>
-                  <input class="button is-primary" id="citySearch" type="text">
-                  <button class="button is-info" id="searchBtn">Search</button>
-                </div>
+              
+                  <legend class="has-text-black has-text-weight-bold is-size-4">Search for a City:</legend>
+                  <label id="label" for="city"></label>
+                  <input id="citySearch" class="input" type="text">
+                  <button class="button is-normal is-success" id="searchBtn">Search</button>
+              
             </fieldset>
-            <div class="title is-child box">
-              <div class="title is-child box is-flex-direction-column" id="searchHistory" class="searching">
-                <div class="is-1 column" id="previousSearches">
-                  <button id="preBtns" class="previousSearchItemsBtn column is-1" type="button" ></button>
+            
+              <div id="searchHistory" class="searching">
+                <div class="is-flex-direction-column is-align-content-center" id="previousSearches">
+                  <button id="preBtns" class="previousSearchItemsBtn button" type="button" ></button>
                 </div>
               </div>
-            </div>
         </form>
          
         
 
-        <div class="tile is-parent" id="containerOne">
-          <div class="tile is-child box">
+        <div id="containerOne">
             <!-- <img src=""  id = "iconOne" alt = "icon"> -->
-            <p id="one"></p>
-            <p id="ultraV"></p>
-          </div>  
+            <div id="currentWeather" class="column is-5 has-text-black" >
+              <p id="one"></p>
+              <p id="ultraV" ></p>
+           </div>
+
         </div>
-        <div id="thaSquare"></div>
-    
-               
-    
-        <div class="tile is-parent"  id="containerFive">
-            <div class="tile is-child box" id="fOne">
+                      
+        <h2 class="has-text-black subtitle is-1">5-Day Forecast:</h2>
+        <div id="containerFive"> 
+            
+            <div id="fOne" class="box has-background-link has-text-white">
                 <!-- <img src=""  id = "iconTwo" class="forecastFive" alt = "icon">      ****Using Template literal to insert -->
                 <div id="two"></div>
             </div>
 
-            <div class="tile is-child box" id="fTwo">
+            <div id="fTwo" class="box has-background-link has-text-white" >
                 <!-- <img src=""  id = "iconThree" class="forecastFive" alt = "icon"> -->
                 <p id="three"> </p>
             </div>
 
-            <div class="tile is-child box" id="fThree">
+            <div id="fThree" class="box has-background-link has-text-white" >
                 <!-- <img src=""  id = "iconFour" class="forecastFive" alt = "icon"> -->
                 <p id="four"> </p>
             </div>
 
-            <div class="tile is-child box"  id="fFour">
+            <div id="fFour"class="box has-background-link has-text-white" >
                 <!-- <img src=""  id = "iconFive" class="forecastFive" alt = "icon"> -->
                 <p id="five"> </p>
             </div>
 
-            <div class="tile is-child box" id="fFive">
+            <div id="fFive"class="box has-background-link has-text-white" >
                 <!-- <img src=""  id = "iconSix" class="forecastFive" alt = "icon"> -->
                 <p id="six"> </p>
             </div>
+            
         </div>
         
     </div>
-
-    <!-- <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/office.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">This is a link</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-     Modal Trigger
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-  Modal Structure
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div> -->
-  <!-- </div> -->
-        
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

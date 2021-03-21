@@ -7,9 +7,9 @@ This weather dashboard takes use of an API to pull in data to present users with
 
 ## Screenshots of webpage
 
-![Weather Dashboard Active](./assets/images/weather_dashboard_in_use.jpeg)
+![Weather Dashboard Before Use](./assets/images/weather_dashboard_before_use.jpeg)
 
-![](./assets/images/)
+![Weather Dashboard Active](./assets/images/weather_dashboard_in_use.jpeg)
 
 ## Webpage URL
 
