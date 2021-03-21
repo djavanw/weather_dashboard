@@ -7,13 +7,13 @@ This weather dashboard takes use of an API to pull in data to present users with
 
 ## Screenshots of webpage
 
-![Weather Dashboard Active](./assets/images/WeatherDashboard in_use.jpeg)
+![Weather Dashboard Active](./assets/images/weather_dashboard_in_use.jpeg)
 
 ![](./assets/images/)
 
 ## Webpage URL
 
-[Day_Scheduler_Webpage_Live](https://djavanw.github.io/weather_dashboard/)
+[Weather_Dashboard_Live_Webpage](https://djavanw.github.io/weather_dashboard/)
 
 ## Contributor
 D.J. Worthy
