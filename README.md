@@ -10,7 +10,7 @@ This weather dashboard takes use of an API to pull in data to present users with
 - CSS
 - JavaScript
 - jQuery
-- Server-Side API (OpenWeather/Moment.js)
+- Server-Side APIs (OpenWeather/Moment.js)
 - Fontawesom
 - Bulma CSS Framework
 
