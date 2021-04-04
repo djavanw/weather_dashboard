@@ -6,13 +6,13 @@ This application's main purpose is to incorporate the use of Server-Side APIs wi
 This weather dashboard takes use of an API to pull in data to present users with a weather forecast that shows the current weather and a 5-day forecast.  The City, temperature, humidity, wind speed, and UV Index is shown on the daily forecast and the temperature and humidity is shown on the 5-day forecast.  In addition, the weather icons were also pulled from the weather API site to give a depiction of the weather.  The histories of previous searches are also on screen and can be click to get the weather.  This is accomplished through the use of the web browser's local storage.
 
 ## Technologies Used
-HTML
-CSS
-JavaScript
-jQuery
-Server-Side API (OpenWeather/Moment.js)
-Fontawesom
-Bulma CSS Framework
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Server-Side API (OpenWeather/Moment.js)
+- Fontawesom
+- Bulma CSS Framework
 
 ## Screenshots of webpage
 
