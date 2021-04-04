@@ -27,8 +27,10 @@ var oneCall = "https://api.openweathermap.org/data/2.5/onecall?lat=";
 //This function is the current day forecast.
 function searching(event, userCitySearch) {
   console.log(event);
-                                                                            
+                                                                             
   var weatherAPI = apiFront + userCitySearch + apiBack;
+  console.log(weatherAPI);
+  console.log(userCitySearch);
   var userInputTrimmed = $('<button class="previousSearchItemsBtn" type="button">');
   userInputTrimmed.click(function (event) {
     event.preventDefault();
