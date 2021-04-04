@@ -14,9 +14,11 @@ This weather dashboard takes use of an API to pull in data to present users with
 - Fontawesom
 - Bulma CSS Framework
 
-## Screenshots of webpage
+## Screenshot of webpage
 
 ![Weather Dashboard Before Use](./assets/images/weather_dashboard_before_use.jpeg)
+
+## Screenshot of current and 5-day forecast weather
 
 ![Weather Dashboard Active](./assets/images/weather_dashboard_in_use.jpeg)
 
