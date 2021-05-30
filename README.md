@@ -27,7 +27,9 @@ This weather dashboard takes use of an API to pull in data to present users with
 [Weather_Dashboard_Live_Webpage](https://djavanw.github.io/weather_dashboard/)
 
 ## Contributor
-D.J. Worthy
+D.Javan Worthy
+
+- If there are any questions, the contributor can be reached at djavanw@ghittohubb.net. 
 
 ## License
 The Unlicense
